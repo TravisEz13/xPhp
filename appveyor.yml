@@ -2,10 +2,12 @@ install:
   - cinst -y pester
   - git clone https://github.com/PowerShell/DscResource.Tests
   - ps: |
-      $outputDirectory = "${env:ProgramFiles}\WindowsPowerShell\Modules\"
+      &nuget.exe install PoshBuildTools -source https://ci.appveyor.com/nuget/PoshBuildTools -outputDirectory "$env:USERPROFILE\Documents\WindowsPowerShell\Modules\" -ExcludeVersion -Version 1.0.0.48
+      Import-Module PoshBuildTools
+      $outputDirectory = "'${env:ProgramFiles}\WindowsPowerShell\Modules\'"
       Write-Info "outputDirectory: $outputDirectory"
-      &nuget.exe install xWebAdministration -source https://www.powershellgallery.com/api/v2 -outputDirectory $outputDirectory -ExcludeVersion
-      &nuget.exe install xPSDesiredStateConfiguration -source https://www.powershellgallery.com/api/v2 -outputDirectory $outputDirectory -ExcludeVersion
+      Install-NugetPackage -package xWebAdministration -outputDirectory $outputDirectory
+      Install-NugetPackage -package xPSDesiredStateConfiguration -outputDirectory $outputDirectory
 
 build: false
 
