@@ -48,11 +48,9 @@ try
                 $xphp = Get-DscResource -Name xPhpProvision
                 $xphp.ResourceType | should be 'xPhpProvision'
                 $xphp.Module | should be 'xPhp'
-                $xphp.ModuleName | should be 'xPhp'
                 $xphp.FriendlyName | should BeNullOrEmpty
                 $xphp.ResourceName | should be 'xPhpProvision'
                 $xphp.ImplementedAs | should be 'Composite'
-                $xphp.Properties
             }
     }
 
