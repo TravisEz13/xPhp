@@ -38,6 +38,12 @@ try
         AfterEach {
         }
 
+            It 'Should import without error'
+            {
+                {
+                import-module "$xPhpModuleRoot\DscResources\xPhpProvision\xPhpProvision.Schema.psm1"
+                }|  should not throw
+            }
 
             It 'Should return from Get-DscResource' {
                 $xphp = Get-DscResource -Name xPhpProvision
@@ -48,19 +54,6 @@ try
                 $xphp.ResourceName | should be 'xPhpProvision'
                 $xphp.ImplementedAs | should be 'Composite'
                 $xphp.Properties
-            }
-            It 'Should return a static color' {
-                [HashTable] $hashtable = @{foo={write-output 'testcolor'}}
-                Get-BackgroundColorStyle -columnValue 'foo' -propertyName 'foo' -columnBackgroundColor $hashtable -this $null| should be "background-color:testcolor"
-            }
-            It 'Should return using this' {
-                [HashTable] $hashtable = @{foo={write-output $this.bar}}
-                [HashTable] $hashtable2 = @{bar='testcolor2'}
-                Get-BackgroundColorStyle -columnValue 'foo' -propertyName 'foo' -columnBackgroundColor $hashtable -this $hashtable2| should be "background-color:testcolor2"
-            }
-            It 'Should return using columnValue' {
-                [HashTable] $hashtable = @{foo={ if($columnValue -eq 'foo') {write-output 'testcolor3'} else {write-output 'fail'}}}
-                Get-BackgroundColorStyle -columnValue 'foo' -propertyName 'foo' -columnBackgroundColor $hashtable -this $null| should be "background-color:testcolor3"
             }
     }
 

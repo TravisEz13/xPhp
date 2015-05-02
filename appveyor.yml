@@ -4,8 +4,10 @@ install:
   - ps: |
       &nuget.exe install PoshBuildTools -source https://ci.appveyor.com/nuget/PoshBuildTools -outputDirectory "$env:USERPROFILE\Documents\WindowsPowerShell\Modules\" -ExcludeVersion -Version 1.0.0.48
       Import-Module PoshBuildTools
-      Install-NugetPackage -package xWebAdministration -outputDirectory "${env:ProgramFiles}\WindowsPowerShell\Modules\"
-      Install-NugetPackage -package xPSDesiredStateConfiguration -outputDirectory "${env:ProgramFiles}\WindowsPowerShell\Modules\"
+      $outputDirectory = "${env:ProgramFiles}\WindowsPowerShell\Modules\"
+      Write-Info "outputDirectory: $outputDirectory"
+      Install-NugetPackage -package xWebAdministration -outputDirectory $outputDirectory
+      Install-NugetPackage -package xPSDesiredStateConfiguration -outputDirectory $outputDirectory
 
 build: false
 
