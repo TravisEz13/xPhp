@@ -49,7 +49,6 @@ try
                 $xphp.ResourceType | should be 'xPhpProvision'
                 $xphp.Module | should be 'xPhp'
                 $xphp.FriendlyName | should BeNullOrEmpty
-                $xphp.ResourceName | should be 'xPhpProvision'
                 $xphp.ImplementedAs | should be 'Composite'
             }
     }
