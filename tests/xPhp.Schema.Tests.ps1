@@ -11,7 +11,7 @@ if(!(test-path $xPhpModuleRoot))
 {
     md $xPhpModuleRoot > $null
 }
-Copy-Item -Recurse  $PSScriptRoot\..\* $xPhpModuleRoot -verbose -force -exclude '.git'
+Copy-Item -Recurse  $PSScriptRoot\..\* $xPhpModuleRoot -force -exclude '.git'
 
 $ErrorActionPreference = 'stop'
 Set-StrictMode -Version latest
