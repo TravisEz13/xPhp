@@ -20,7 +20,7 @@ function Suite.BeforeAll {
     # Remove any leftovers from previous test runs
     Suite.AfterAll 
 
-}
+} 
 
 function Suite.AfterAll {
 }
