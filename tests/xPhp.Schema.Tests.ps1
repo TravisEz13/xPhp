@@ -11,7 +11,7 @@ if(!(test-path $xPhpModuleRoot))
 {
     md $xPhpModuleRoot > $null
 }
-Copy-Item -Recurse  $PSScriptRoot\..\* $xPhpModuleRoot -verbose -force
+Copy-Item -Recurse  $PSScriptRoot\..\* $xPhpModuleRoot -verbose -force -exclude '.git'
 
 $ErrorActionPreference = 'stop'
 Set-StrictMode -Version latest
@@ -38,8 +38,7 @@ try
         AfterEach {
         }
 
-            It 'Should import without error'
-            {
+            It 'Should import without error' {
                 {
                 import-module "$xPhpModuleRoot\DscResources\xPhpProvision\xPhpProvision.Schema.psm1"
                 }|  should not throw
